@@ -7,13 +7,16 @@ $font-size: 1.3rem;
 $primary: #FFE01F;
 $secondary: #CECECE;
 $background: #1E1E1E;
+$secondbg: #DF5C14;
+$road: #e3c388;
 
 @import "~bootstrap/scss/bootstrap";
 
 body {
     min-height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/background.jpeg);
+    background-size: cover;
     background-repeat: no-repeat;
     font-family: $font-body;
     font-size: $font-size;
-    background: $background;
 }
