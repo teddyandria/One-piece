@@ -1,0 +1,21 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Ajouter un nouvel équipage
+{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('add_crew') }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="crewform col-8 col-sm-6 p-3 mx-auto">
+			<a class="btn btn-success" href="{{ path('app_admin_crew_index') }}">Retour</a>
+			<div>
+				{{ include('admin_crew/_form.html.twig') }}
+
+			</div>
+		</div>
+
+	{% endblock %}

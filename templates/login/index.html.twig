@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 
 {% block title %}Se connecter
@@ -25,11 +25,15 @@
 					<label class="form-label text-dark fw-bold fs-5" for="password">Password</label>
 					<input type="password" id="password" class="form-control" name="_password">
 				</div>
-				<input
-				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-				{# <input type="hidden" name="_target_path" value="/home"> #}
-				<button class="btn btn-light col-lg-6 m-auto mb-3 mt-3 fw-bold fs-5" type="submit">Se connecter</button>
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				<input type="hidden" name="_target_path" value="{{ path('crew_index') }}">
+				<input type="hidden" name="_target_path" value="{{ path('app_admin') }}">
+				<button class="btn btn-primary col-lg-6 m-auto mb-3 mt-3 fw-bold fs-5" type="submit">Se connecter</button>
 			</form>
+			<div class="text-center mb-3">
+				<div class="my-2 fw-normal fs-5">Vous n'avez pas de compte ?</div>
+				<a class="btn btn-outline-primary mt-2 col-lg-6 mb-5 w-75 fw-bold fs-5" href="{{ path('app_register')}}">S'inscrire</a>
+			</div>
 		</div>
 	</div>
 {% endblock %}

@@ -33,11 +33,11 @@ class UserFixtures extends Fixture
         $admin->setLastName('Andr');
         $admin->setRoles(['ROLE_ADMIN']);
         $hashedPassword = $this->passwordHasher->hashPassword(
-            $user,
+            $admin,
             'admin1234'
         );
         $admin->setPassword($hashedPassword);
-        $manager->persist($user);
+        $manager->persist($admin);
 
         $manager->flush();
     }
