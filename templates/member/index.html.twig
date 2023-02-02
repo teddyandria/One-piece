@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Personnages
+{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('pirate') }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row row-cols-1 row-cols-md-2 gap-3 mx-auto mt-5">
+			{% for member in members %}
+				<div class="blockcard col-lg-5 col-sm-10 p-0 mb-4 position-relative mx-auto">
+					<div class="position-absolute top-50 start-0 translate-middle">
+						<img class="" src="{{ asset('build/images/' ~ member.photo) }}" alt=" card image cap" width="270" height=" 320">
+					</div>
+					<div class="text-light d-flex ms-5 my-2 text-center p-0 flex-column justify-content-between mx-4">
+						<h5 class="text-light mb-2 fs-2">{{member.name}}</h5>
+						<p class="my-2 fs-5">Age :
+							{{member.age}}</p>
+						<p class="my-2 fs-5">Prime :
+							{{data.0.11.bounty}}
+							Berry
+						</p>
+						<a href="#" class="btn btn-primary align-self-center">
+							Equipage</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
