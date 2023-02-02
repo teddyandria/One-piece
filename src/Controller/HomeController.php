@@ -10,9 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(CallApiService $callApiService): Response
+    public function index(): Response
     {
-        dd($callApiService->getOnePieceData());
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
         ]);

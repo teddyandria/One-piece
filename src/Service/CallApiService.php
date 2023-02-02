@@ -19,7 +19,6 @@ class CallApiService
             'GET',
             'https://api.api-onepiece.com/characters'
         );
-
         return $response->toArray();
     }
 }
