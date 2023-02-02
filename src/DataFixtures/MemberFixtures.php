@@ -31,7 +31,7 @@ class MemberFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        foreach (CrewFixtures::CREWS as $key) {
+        foreach (CrewFixtures::CREWS as $key => $crewName) {
             foreach (self::MEMBERS as $memberName => $memberInfo) {
                 $member = new Member();
                 $member->setName($memberName);
@@ -41,8 +41,8 @@ class MemberFixtures extends Fixture implements DependentFixtureInterface
                 $member->setCrew($crew);
                 $manager->persist($member);
             }
+            $manager->flush();
         }
-        $manager->flush();
     }
 
     public function getDependencies()

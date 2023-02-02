@@ -1,0 +1,25 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Edit Crew
+{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('add_crew') }}
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h1 class="text-center">{{crew.name}}</h1>
+		<div class="crewform ">
+			<a class="btn btn-primary m-2" href="{{ path('app_admin_crew_index') }}">Retour</a>
+			<div class="p-3">
+				{{ form_start(form) }}
+				{{ form_widget(form, { 'attr': {'class': 'text-light col-6 mx-auto'} }) }}
+				<div class="d-flex justify-content-center gap-3">
+					<button class="btn btn-secondary">{{ button_label|default('Enregsitrer') }}</button>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

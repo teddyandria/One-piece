@@ -1,0 +1,30 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Pirate .
+	{{member.name}}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('add_crew') }}
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h1 class="text-center">{{ member.name }}
+		</h1>
+		<div>
+			<div class="crewform ">
+				<div class="p-3">
+					<a class="btn btn-primary m-2" href="{{ path('app_admin_member_index') }}">Retour</a>
+					{{ form_start(form) }}
+					{{ form_widget(form, { 'attr': {'class': 'text-light col-6 mx-auto'} }) }}
+					<div class="d-flex justify-content-center">
+						<button class="btn btn-secondary mx-5">{{ button_label|default('Enregistrer') }}</button>
+					</div>
+					{{ form_end(form) }}
+				</div>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block title %}Admin - One piece
+{% endblock %}
+
+{% block header %}
+	{% include '_headerAdmin.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="container row text-light">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+{% endblock %}

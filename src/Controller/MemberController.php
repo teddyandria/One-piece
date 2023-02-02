@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
-use App\Service\CallApiService;
+use App\Entity\Member;
+use App\Form\MemberType;
 use App\Repository\MemberRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,6 +22,24 @@ class MemberController extends AbstractController
             'members' => $members,
         ]);
     }
+
+    #[Route('/new', name: 'new')]
+    public function new(Request $request, MemberRepository $crewRepository): Response
+    {
+        $member = new Member();
+
+        $form = $this->createForm(MemberType::class, $member);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $crewRepository->save($member, true);
+            return $this->redirectToRoute('crew_index');
+        }
+        return $this->renderForm('member/new.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
     #[Route('/show/{id<^[0-9]+$>}', name: 'show')]
     public function show(int $id, MemberRepository $memberRepository): Response
     {
