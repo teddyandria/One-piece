@@ -10,23 +10,42 @@ class CrewFixtures extends Fixture
 {
 
     const CREWS = [
-        'Chapeaux de paille',
-        'L\'équipage de Roger',
-        'L\'équipage de Barbe Blanche',
-        'L\'équipage du Roux',
-        'Thriller Bark',
+        [
+            'name' => 'Mugiwara',
+            'Description' => 'Yonko',
+            'Nombre' => 10,
+            'Image' => 'crewmugi.png',
+        ],
+        [
+            'name' => 'Equipage du Roux',
+            'Description' => 'Yonko',
+            'Nombre' => 20,
+            'Image' => 'rouw.png',
+        ],
+        [
+            'name' => 'Equipage de  Barbe Blanche',
+            'Description' => 'Yonko',
+            'Nombre' => 700,
+            'Image' => 'bb.png',
+        ],
+        [
+            'name' => 'Cent Bete',
+            'Description' => 'Yonko',
+            'Nombre' => 1500,
+            'Image' => 'centbete.png',
+        ],
     ];
 
     public function load(ObjectManager $manager)
     {
-        foreach (self::CREWS as $key => $crewName) {
+        foreach (self::CREWS as $key => $crewInfo) {
             $crew = new Crew();
-            $crew->setName($crewName);
-            $crew->setDescription('Le capitane se nomme luffy');
-            $crew->setNumber(10);
-            $crew->setImage('mugi.png');
+            $crew->setName($crewInfo['name']);
+            $crew->setDescription($crewInfo['Description']);
+            $crew->setNumber($crewInfo['Nombre']);
+            $crew->setImage($crewInfo['Image']);
             $manager->persist($crew);
-            $this->addReference('crew_' . $crewName, $crew);
+            $this->addReference('crew_' . $key, $crew);
         }
         $manager->flush();
     }

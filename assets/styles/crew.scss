@@ -1,0 +1,12 @@
+@import "_theme";
+
+.blockcrew {
+    background: rgba(236, 201, 145, 0.7);
+    border-radius: 10px;
+}
+
+.block-captain:nth-of-type(even) {
+    position: absolute;
+    top: 50%;
+    right: 0;
+}

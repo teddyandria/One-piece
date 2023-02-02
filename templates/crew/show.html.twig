@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Equipage
+{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('crew') }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="d-flex bg-dark">
+			<h1 class="text-light">{{crew.name}}</h1>
+			{% for member in members %}
+				<div>
+					<img class="" src="{{ asset('build/images/' ~ member.photo) }}" alt=" card image cap" width="150" height="150">
+					<p class="text-light text-center">{{ member.name }}</p>
+				</div>
+			{% endfor %}
+		</div>
+		<a href="{{ path('crew_index') }}">Retourner à la liste des équipages</a>
+	</div>
+{% endblock %}

@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\CrewRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CrewRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: CrewRepository::class)]
 class Crew
@@ -25,9 +27,41 @@ class Crew
     #[ORM\Column(length: 255)]
     private ?string $Image = null;
 
+    #[ORM\OneToMany(mappedBy: 'crew', targetEntity: Member::class)]
+    private $members;
+
+    public function __construct()
+    {
+        $this->members = new ArrayCollection();
+    }
+
+    public function getMembers(): Collection
+    {
+        return $this->members;
+    }
     public function getId(): ?int
     {
         return $this->id;
+    }
+    public function addMember(Member $member): self
+    {
+        if (!$this->members->contains($member)) {
+            $this->members->add($member);
+            $member->setCrew($this);
+        }
+        return $this;
+    }
+
+    public function removeMember(Member $member): self
+    {
+        if ($this->members->removeElement($member)) {
+            // set the owning side to null (unless already changed)
+            if ($member->getCrew() === $this) {
+                $member->setCrew(null);
+            }
+        }
+
+        return $this;
     }
 
     public function getName(): ?string

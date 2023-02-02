@@ -23,7 +23,7 @@ class Member
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $age = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'members')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Crew $crew = null;
 
