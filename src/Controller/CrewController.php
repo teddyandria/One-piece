@@ -32,7 +32,7 @@ class CrewController extends AbstractController
         $crew = $crewRepository->findOneBy(['Name' => $crewName]);
 
         $crewId = $crew->getId();
-        $members = $memberRepository->findOneBy(['crew' => $crewId]);
+        $members = $memberRepository->findOneBy(['crew' => $crewId], ['id' => 'DESC'],);
 
         return $this->render('crew/show.html.twig', [
             'crew' => $crew,
